@@ -17,8 +17,15 @@ window_set_colour(c_ltgray);
 var windowWidth = window_get_width();
 var windowHeight = window_get_height();
 
-view_wview[0] = windowWidth * 2.5;
-view_hview[0] = windowHeight * 2.5;
+global.columns = 4;
+global.rows = 5;
+
+global.upperLeftX = 0;
+global.upperLeftY = 5000;
+
+var zoomOfView = 1.5;
+view_wview[0] = windowWidth * zoomOfView;
+view_hview[0] = windowHeight * zoomOfView;
 
 view_wport[0] = windowWidth;
 view_hport[0] = windowHeight;
@@ -26,7 +33,22 @@ view_hport[0] = windowHeight;
 view_xport[1] = windowWidth - view_wview[1] - 50;
 view_yport[1] = (windowHeight - view_hview[1]) / 2;
 
-instance_create(0, 5000, obj_maze);</code>
+var spriteWidth = sprite_get_width(spr_maze);
+var spriteHeight = sprite_get_height(spr_maze);
+
+var spriteIndex = 0;
+var yIndex;
+for(yIndex = 0; yIndex &lt; global.rows; yIndex++) {
+    var xIndex;
+    for(xIndex = 0; xIndex &lt; global.columns; xIndex++) {
+        var instance = instance_create(global.upperLeftX + xIndex * spriteWidth,
+            global.upperLeftY + yIndex * spriteHeight, obj_maze);
+        instance.image_speed = 0;
+        instance.image_index = spriteIndex++;
+    }
+}
+
+instance_create(450, 5550, obj_character);</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

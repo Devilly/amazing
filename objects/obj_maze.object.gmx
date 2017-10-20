@@ -8,28 +8,6 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string></string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="3" enumb="1">
       <action>
         <libid>1</libid>
@@ -47,24 +25,33 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var relativeMovement = 100;
+            <string>var relativeMovement = 10;
+var threshold = 0;
+var yMovement = device_get_tilt_y() * relativeMovement;
+if(abs(yMovement) &lt; threshold) {
+    yMovement = 0;
+}
+var xMovement = device_get_tilt_x() * relativeMovement;
+if(abs(xMovement) &lt; threshold) {
+    xMovement = 0;
+}
 
-var prospectiveX = view_xview[0] + device_get_tilt_y() * relativeMovement;
-var maxX = x + sprite_width - view_wview[0];
+var prospectiveX = view_xview[0] + yMovement;
+var maxX = global.upperLeftX + global.columns * sprite_width - view_wview[0];
 
-if(prospectiveX &lt; x) {
-    prospectiveX = x;
+if(prospectiveX &lt; global.upperLeftX) {
+    prospectiveX = global.upperLeftX;
 } else if(prospectiveX &gt; maxX) {
     prospectiveX = maxX;
 }
 
 view_xview[0] = prospectiveX;
 
-var prospectiveY = view_yview[0] + device_get_tilt_x() * relativeMovement;
-var maxY = y + sprite_height - view_hview[0];
+var prospectiveY = view_yview[0] + xMovement;
+var maxY = global.upperLeftY + global.rows * sprite_height - view_hview[0];
 
-if(prospectiveY &lt; y) {
-    prospectiveY = y;
+if(prospectiveY &lt; global.upperLeftY) {
+    prospectiveY = global.upperLeftY;
 } else if(prospectiveY &gt; maxY) {
     prospectiveY = maxY;
 }

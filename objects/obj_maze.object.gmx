@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// move view according to phone tilt
+            <string>/// tilt viewing
 
 /*
 
@@ -58,6 +58,50 @@ if(prospectiveY &lt; global.upperLeftY) {
     prospectiveY = global.upperLeftY;
 } else if(prospectiveY &gt; maxY) {
     prospectiveY = maxY;
+}
+
+view_yview[0] = prospectiveY;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// player camera
+
+var prospectiveX = obj_character.x - (view_wview[0] / 2);
+var maxX = global.upperLeftX + global.columns * sprite_width - view_wview[0];
+
+if(prospectiveX &lt; global.upperLeftX) {
+    prospectiveX = global.upperLeftX;
+} else if(prospectiveX &gt; maxX) {
+    prospectiveX = maxX;
+}
+
+view_xview[0] = prospectiveX;
+
+var prospectiveY = obj_character.y - (view_hview[0] / 2);
+var maxY = global.upperLeftY + global.rows * sprite_height - view_hview[0];
+
+if(prospectiveY &lt; global.upperLeftY) {
+    prospectiveY = global.upperLeftY;
+} else if(prospectiveY &gt; maxY) {
+    prospectiveY = maxY;
+    show_debug_message(maxY);
 }
 
 view_yview[0] = prospectiveY;

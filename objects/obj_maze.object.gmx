@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var relativeMovement = 10;
+            <string>/// move view according to phone tilt
+
+/*
+
+var relativeMovement = 10;
 var threshold = 0;
 var yMovement = device_get_tilt_y() * relativeMovement;
 if(abs(yMovement) &lt; threshold) {

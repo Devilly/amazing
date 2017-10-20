@@ -24,6 +24,9 @@ global.upperLeftX = 0;
 global.upperLeftY = 5000;
 
 var zoomOfView = 1.5;
+view_xview[0] = global.upperLeftX;
+view_yview[0] = global.upperLeftY;
+
 view_wview[0] = windowWidth * zoomOfView;
 view_hview[0] = windowHeight * zoomOfView;
 

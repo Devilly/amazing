@@ -15,6 +15,11 @@
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <scripts name="character">
+      <script>scripts\moveCharacter.gml</script>
+    </scripts>
+  </scripts>
   <objects name="objects">
     <object>objects\obj_maze</object>
     <object>objects\obj_button_up</object>

@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>movementSpeed = 10;
+            <string>walkingSpeed = 10;
 </string>
           </argument>
         </arguments>
@@ -48,7 +48,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>y -= movementSpeed;
+            <string>moveCharacter(0, -1);
 </string>
           </argument>
         </arguments>
@@ -71,7 +71,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x -= movementSpeed;
+            <string>moveCharacter(-1, 0);
 </string>
           </argument>
         </arguments>
@@ -94,7 +94,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>y += movementSpeed;
+            <string>moveCharacter(0, 1);
 </string>
           </argument>
         </arguments>
@@ -117,7 +117,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x += movementSpeed;
+            <string>moveCharacter(1, 0);
 </string>
           </argument>
         </arguments>

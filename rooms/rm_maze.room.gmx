@@ -33,8 +33,8 @@ view_hview[0] = windowHeight * zoomOfView;
 view_wport[0] = windowWidth;
 view_hport[0] = windowHeight;
 
-view_xport[1] = windowWidth - view_wview[1] - 50;
-view_yport[1] = (windowHeight - view_hview[1]) / 2;
+view_xport[1] = windowWidth - view_wview[1];
+view_yport[1] = windowHeight - view_hview[1];
 
 var spriteWidth = sprite_get_width(spr_maze);
 var spriteHeight = sprite_get_height(spr_maze);
@@ -83,7 +83,7 @@ instance_create(450, 5550, obj_character);</code>
   </backgrounds>
   <views>
     <view visible="-1" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1" hview="1" xport="0" yport="0" wport="1" hport="1" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
-    <view visible="-1" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="640" xport="0" yport="0" wport="640" hport="640" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
+    <view visible="-1" objName="&lt;undefined&gt;" xview="0" yview="0" wview="600" hview="510" xport="0" yport="0" wport="600" hport="510" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
@@ -92,10 +92,11 @@ instance_create(450, 5550, obj_character);</code>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="obj_button_up" x="320" y="128" name="inst_9F0701FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_button_right" x="512" y="320" name="inst_8B967A0D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_button_down" x="320" y="512" name="inst_3AC7A18B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_button_left" x="128" y="320" name="inst_D17E034E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_button_up" x="335" y="107" name="inst_9F0701FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_button_right" x="463" y="237" name="inst_8B967A0D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_button_down" x="335" y="370" name="inst_3AC7A18B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_button_left" x="208" y="236" name="inst_D17E034E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_movement_background" x="0" y="0" name="inst_2298C542" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

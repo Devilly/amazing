@@ -12,6 +12,7 @@
     <sprite>sprites\spr_button_down</sprite>
     <sprite>sprites\spr_button_left</sprite>
     <sprite>sprites\spr_character</sprite>
+    <sprite>sprites\spr_movement_background</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -28,6 +29,7 @@
     <object>objects\obj_button_left</object>
     <object>objects\obj_button</object>
     <object>objects\obj_character</object>
+    <object>objects\obj_movement_background</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_maze</room>

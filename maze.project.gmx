@@ -7,6 +7,8 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_maze</sprite>
+    <sprite>sprites\spr_maze_hitbox</sprite>
+    <sprite>sprites\spr_sand</sprite>
     <sprite>sprites\spr_button_right</sprite>
     <sprite>sprites\spr_button_up</sprite>
     <sprite>sprites\spr_button_down</sprite>
@@ -27,6 +29,8 @@
   </scripts>
   <objects name="objects">
     <object>objects\obj_maze</object>
+    <object>objects\obj_maze_hitbox</object>
+    <object>objects\obj_sand</object>
     <object>objects\obj_button_up</object>
     <object>objects\obj_button_right</object>
     <object>objects\obj_button_down</object>

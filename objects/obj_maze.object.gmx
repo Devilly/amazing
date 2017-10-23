@@ -3,7 +3,7 @@
   <spriteName>spr_maze</spriteName>
   <solid>-1</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-1</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -84,7 +84,7 @@ view_yview[0] = prospectiveY;
             <string>/// player camera
 
 var prospectiveX = obj_character.x - (view_wview[0] / 2);
-var maxX = global.upperLeftX + global.columns * sprite_width - view_wview[0];
+var maxX = global.lowerRightX - view_wview[0];
 
 if(prospectiveX &lt; global.upperLeftX) {
     prospectiveX = global.upperLeftX;
@@ -95,7 +95,7 @@ if(prospectiveX &lt; global.upperLeftX) {
 view_xview[0] = prospectiveX;
 
 var prospectiveY = obj_character.y - (view_hview[0] / 2);
-var maxY = global.upperLeftY + global.rows * sprite_height - view_hview[0];
+var maxY = global.lowerRightY - view_hview[0];
 
 if(prospectiveY &lt; global.upperLeftY) {
     prospectiveY = global.upperLeftY;

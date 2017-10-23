@@ -19,25 +19,43 @@ var windowHeight = window_get_height();
 
 surface_resize(application_surface, windowWidth, windowHeight);
 
+// init movement pane
+var width = obj_movement_background.sprite_width;
+var height = obj_movement_background.sprite_height;
+view_wview[1] = width;
+view_hview[1] = height;
+
+view_wport[1] = width;
+view_hport[1] = height;
+
+view_xport[1] = windowWidth - view_wview[1];
+view_yport[1] = windowHeight - view_hview[1];
+
+//init combat pane
+width = obj_combat_background.sprite_width;
+height = obj_combat_background.sprite_height;
+view_wview[2] = width;
+view_hview[2] = height;
+
+view_wport[2] = width;
+view_hport[2] = height;
+
+// init playground
 global.columns = 4;
 global.rows = 5;
 
 global.upperLeftX = 0;
 global.upperLeftY = 5000;
 
-var zoomOfView = 1.5;
 view_xview[0] = global.upperLeftX;
 view_yview[0] = global.upperLeftY;
 
+var zoomOfView = 1.5;
 view_wview[0] = windowWidth * zoomOfView;
 view_hview[0] = windowHeight * zoomOfView;
 
 view_wport[0] = windowWidth;
 view_hport[0] = windowHeight;
-
-view_xport[1] = windowWidth - view_wview[1];
-view_yport[1] = windowHeight - view_hview[1];
-
 var spriteWidth = sprite_get_width(spr_maze);
 var spriteHeight = sprite_get_height(spr_maze);
 
@@ -85,8 +103,8 @@ instance_create(450, 5550, obj_character);</code>
   </backgrounds>
   <views>
     <view visible="-1" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1" hview="1" xport="0" yport="0" wport="1" hport="1" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
-    <view visible="-1" objName="&lt;undefined&gt;" xview="0" yview="0" wview="603" hview="511" xport="0" yport="0" wport="603" hport="511" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
-    <view visible="-1" objName="&lt;undefined&gt;" xview="0" yview="600" wview="334" hview="720" xport="0" yport="0" wport="334" hport="720" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
+    <view visible="-1" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1" hview="1" xport="0" yport="0" wport="1" hport="1" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
+    <view visible="-1" objName="&lt;undefined&gt;" xview="0" yview="600" wview="1" hview="1" xport="0" yport="0" wport="1" hport="1" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>

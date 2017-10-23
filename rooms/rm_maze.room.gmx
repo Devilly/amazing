@@ -17,6 +17,8 @@ window_set_colour(c_ltgray);
 var windowWidth = window_get_width();
 var windowHeight = window_get_height();
 
+surface_resize(application_surface, windowWidth, windowHeight);
+
 global.columns = 4;
 global.rows = 5;
 

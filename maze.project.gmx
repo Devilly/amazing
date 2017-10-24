@@ -24,7 +24,7 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <scripts name="character">
-      <script>scripts\moveCharacter.gml</script>
+      <script>scripts\setMovement.gml</script>
     </scripts>
   </scripts>
   <objects name="objects">

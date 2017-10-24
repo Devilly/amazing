@@ -25,7 +25,71 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>walkingSpeed = 10;
+            <string>xMovement = 0;
+yMovement = 0;
+
+currentSpeed = 0;
+walkingSpeed = 10;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>currentSpeed -= 0.4;
+if(currentSpeed &lt; 0) {
+    currentSpeed = 0;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>var hitObject = obj_maze_hitbox;
+
+var iteration;
+for(iteration = 0; iteration &lt; currentSpeed; iteration++) {
+    if(!place_meeting(x + xMovement, y,  hitObject)) {
+        x += xMovement;
+    }
+    
+    if(!place_meeting(x, y + yMovement, hitObject)) {
+        y += yMovement;
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -48,7 +112,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>moveCharacter(0, -1);
+            <string>setMovement(0, -1);
 </string>
           </argument>
         </arguments>
@@ -71,7 +135,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>moveCharacter(-1, 0);
+            <string>setMovement(-1, 0);
 </string>
           </argument>
         </arguments>
@@ -94,7 +158,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>moveCharacter(0, 1);
+            <string>setMovement(0, 1);
 </string>
           </argument>
         </arguments>
@@ -117,7 +181,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>moveCharacter(1, 0);
+            <string>setMovement(1, 0);
 </string>
           </argument>
         </arguments>

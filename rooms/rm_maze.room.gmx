@@ -77,6 +77,11 @@ for(yIndex = 0; yIndex &lt; global.rows; yIndex++) {
         instance.image_speed = 0;
         instance.image_index = spriteIndex;
         
+        instance = instance_create(global.upperLeftX + xIndex * spriteWidth,
+            global.upperLeftY + yIndex * spriteHeight, obj_sand);
+        instance.image_speed = 0;
+        instance.image_index = spriteIndex;
+        
         spriteIndex++;
     }
 }

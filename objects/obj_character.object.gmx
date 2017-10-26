@@ -207,7 +207,9 @@ for(iteration = 0; iteration &lt; currentSpeed; iteration++) {
             <kind>1</kind>
             <string>draw_self();
 
-draw_text_transformed(x, y, "x: " + string(x) + "; y: " + string(y), 2, 2, 0);
+if(global.debugging) {
+    draw_text_transformed(x, y, "x: " + string(x) + "; y: " + string(y), 2, 2, 0);
+}
 </string>
           </argument>
         </arguments>

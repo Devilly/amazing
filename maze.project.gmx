@@ -45,6 +45,9 @@
     <object>objects\obj_button_super_attack</object>
     <object>objects\obj_combat_background</object>
   </objects>
+  <timelines name="timelines">
+    <timeline>timelines\tl_lose_target</timeline>
+  </timelines>
   <rooms name="rooms">
     <room>rooms\rm_maze</room>
   </rooms>

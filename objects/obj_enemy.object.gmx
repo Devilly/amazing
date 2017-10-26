@@ -27,7 +27,12 @@
             <kind>1</kind>
             <string>walkingSpeed = 5;
 
-path = path_add();
+movementPath = path_add();
+
+canSeeCharacter = false;
+inPursuit = false;
+viewPath = path_add();
+
 </string>
           </argument>
         </arguments>
@@ -50,7 +55,14 @@ path = path_add();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>mp_grid_path(global.grid, path, x, y, obj_character.x, obj_character.y, false);
+            <string>canSeeCharacter = mp_linear_path_object(viewPath, obj_character.x, obj_character.y, 20, obj_maze_hitbox);
+if(canSeeCharacter) {
+    event_user(0);
+}
+
+if(inPursuit) {
+    mp_grid_path(global.grid, movementPath, x, y, obj_character.x, obj_character.y, false);
+}
 </string>
           </argument>
         </arguments>
@@ -73,8 +85,8 @@ path = path_add();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(distance_to_object(obj_character) &gt; 300) {
-    var pathLength = path_get_length(path);
+            <string>if(inPursuit &amp;&amp; (distance_to_object(obj_character) &gt; 150)) {
+    var pathLength = path_get_length(movementPath);
     var position = 0;
     var positionStep = 1 / pathLength;
     
@@ -82,11 +94,66 @@ path = path_add();
     for(iteration = 0; iteration &lt; walkingSpeed; iteration++) {
         position += positionStep;
         
-        x = path_get_x(path, position);
-        y = path_get_y(path, position);
+        x = path_get_x(movementPath, position);
+        y = path_get_y(movementPath, position);
     }
 }   
 </string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>inPursuit = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>305</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_timeline_set</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>14</kind>
+            <timeline>tl_lose_target</timeline>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
           </argument>
         </arguments>
       </action>
@@ -110,7 +177,15 @@ path = path_add();
             <kind>1</kind>
             <string>draw_self();
 
-draw_path(path, 0, 0, true);
+if(global.debugging) {
+    if(canSeeCharacter) {
+        draw_text_transformed(x, y, "Hello!", 2, 2, 0);
+    }
+    
+    if(inPursuit) {
+        draw_path(movementPath, 0, 0, true);
+    }
+}
 </string>
           </argument>
         </arguments>

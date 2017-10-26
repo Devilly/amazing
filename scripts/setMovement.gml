@@ -8,6 +8,14 @@ if((argument1 != 0) && (-yMovement == argument1)) {
 }
 yMovement = argument1;
 
+if(xMovement != 0) {
+    if(xMovement < 0) image_index = 1;
+    else image_index = 3;
+} else {
+    if(yMovement > 0) image_index = 0;
+    else image_index = 2;
+}
+
 currentSpeed += 1;
 if(currentSpeed > walkingSpeed) {
     currentSpeed = walkingSpeed;

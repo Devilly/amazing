@@ -22,7 +22,9 @@
     <sprite>sprites\spr_button_super_attack</sprite>
   </sprites>
   <backgrounds name="background"/>
-  <paths name="paths"/>
+  <paths name="paths">
+    <path>paths\path1</path>
+  </paths>
   <scripts name="scripts">
     <scripts name="character">
       <script>scripts\setMovement.gml</script>

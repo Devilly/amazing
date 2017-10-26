@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>walkingSpeed = 5;
+            <string>image_speed = 0;
+
+walkingSpeed = 5;
 
 movementPath = path_add();
 
@@ -94,8 +96,25 @@ if(inPursuit) {
     for(iteration = 0; iteration &lt; walkingSpeed; iteration++) {
         position += positionStep;
         
-        x = path_get_x(movementPath, position);
-        y = path_get_y(movementPath, position);
+        var newX = path_get_x(movementPath, position);
+        var newY = path_get_y(movementPath, position);
+        
+        if(abs(abs(x) - abs(newX)) &gt; abs(abs(y) - abs(newY))) {
+            if(newX &lt; x) {
+                image_index = 1;
+            } else {
+                image_index = 3;
+            }
+        } else {
+            if(newY &gt; y) {
+                image_index = 0;
+            } else {
+                image_index = 2;
+            }
+        }
+        
+        x = newX;
+        y = newY;
     }
 }   
 </string>

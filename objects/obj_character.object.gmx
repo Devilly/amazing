@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>xMovement = 0;
+            <string>image_speed = 0;
+
+xMovement = 0;
 yMovement = 0;
 
 currentSpeed = 0;

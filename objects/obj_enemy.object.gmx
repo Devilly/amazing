@@ -29,42 +29,8 @@
 
 walkingSpeed = 5;
 
-movementPath = path_add();
-
 canSeeCharacter = false;
 inPursuit = false;
-viewPath = path_add();
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>canSeeCharacter = mp_linear_path_object(viewPath, obj_character.x, obj_character.y, 20, obj_maze_hitbox);
-if(canSeeCharacter) {
-    event_user(0);
-}
-
-if(inPursuit) {
-    mp_grid_path(global.grid, movementPath, x, y, obj_character.x, obj_character.y, false);
-}
 </string>
           </argument>
         </arguments>
@@ -87,37 +53,7 @@ if(inPursuit) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(inPursuit &amp;&amp; (distance_to_object(obj_character) &gt; 150)) {
-    var pathLength = path_get_length(movementPath);
-    var position = 0;
-    var positionStep = 1 / pathLength;
-    
-    var iteration;
-    for(iteration = 0; iteration &lt; walkingSpeed; iteration++) {
-        position += positionStep;
-        
-        var newX = path_get_x(movementPath, position);
-        var newY = path_get_y(movementPath, position);
-        
-        if(abs(abs(x) - abs(newX)) &gt; abs(abs(y) - abs(newY))) {
-            if(newX &lt; x) {
-                image_index = 1;
-            } else {
-                image_index = 3;
-            }
-        } else {
-            if(newY &gt; y) {
-                image_index = 0;
-            } else {
-                image_index = 2;
-            }
-        }
-        
-        x = newX;
-        y = newY;
-    }
-}   
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>
@@ -173,39 +109,6 @@ if(inPursuit) {
           <argument>
             <kind>4</kind>
             <string>0</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>draw_self();
-
-if(global.debugging) {
-    if(canSeeCharacter) {
-        draw_text_transformed(x, y, "Hello!", 2, 2, 0);
-    }
-    
-    if(inPursuit) {
-        draw_path(movementPath, 0, 0, true);
-    }
-}
-</string>
           </argument>
         </arguments>
       </action>

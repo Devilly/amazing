@@ -90,16 +90,16 @@ for(yIndex = 0; yIndex &lt; global.rows; yIndex++) {
     }
 }
 
-// Initialize a grid which can be used for pathfinding.
-global.grid = mp_grid_create(0, 5000,
-    (global.lowerRightX - global.upperLeftX) / 50,
-    (global.lowerRightY - global.upperLeftY) / 50,
-    50, 50);
-mp_grid_add_instances(global.grid, obj_maze_hitbox, true);
+// Read the pathfinding graph pre-created for the maze.
+global.graphData = readGraph();
 
-// Add characters to the playing field.
+// Add instances needed for the play.
 instance_create(450, 5550, obj_character);
-instance_create(450, 5650, obj_enemy);</code>
+instance_create(450, 5650, obj_enemy);
+
+if(global.debugging) {
+    instance_create(0, 0, obj_show_maze_graph);
+}</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>0</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

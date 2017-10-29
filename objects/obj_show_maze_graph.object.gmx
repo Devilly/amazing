@@ -38,11 +38,11 @@ var xCells = ceil(view_wview[0] / cellSize);
 var yCells = ceil(view_hview[0] / cellSize);
 
 var yIndex;
-for(yIndex = upperLeftViewY; yIndex &lt; upperLeftViewY + yCells; yIndex += 2) {
+for(yIndex = upperLeftViewY; yIndex &lt; upperLeftViewY + yCells; yIndex += 1) {
     var rowData = ds_list_find_value(global.graphData, yIndex);
 
     var xIndex;
-    for(xIndex = upperLeftViewX; xIndex &lt; upperLeftViewX + xCells; xIndex += 2) {
+    for(xIndex = upperLeftViewX; xIndex &lt; upperLeftViewX + xCells; xIndex += 1) {
         var cellValue = ds_list_find_value(rowData, xIndex);
         var cellColor;
         if(cellValue == -1) {
@@ -52,8 +52,8 @@ for(yIndex = upperLeftViewY; yIndex &lt; upperLeftViewY + yCells; yIndex += 2) {
         }
         draw_set_colour(cellColor);
         
-        draw_circle(global.upperLeftX + xIndex * cellSize,
-            global.upperLeftY + yIndex * cellSize, 5, false);
+        draw_circle(global.upperLeftX + xIndex * cellSize + 0.5 * cellSize,
+            global.upperLeftY + yIndex * cellSize + 0.5 * cellSize, 5, false);
     }
 }
 

@@ -91,7 +91,10 @@ for(yIndex = 0; yIndex &lt; global.rows; yIndex++) {
 }
 
 // Read the pathfinding graph pre-created for the maze.
-global.graphData = readGraph();
+var graph = readGraph();
+global.cellSize = ds_map_find_value(graph, "cellSize");
+global.graphData = ds_map_find_value(graph, "graphData");
+
 
 // Add instances needed for the play.
 instance_create(450, 5550, obj_character);

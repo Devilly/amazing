@@ -10,7 +10,64 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code></code>
+  <code>var graphData = ds_list_create();
+
+var cellSize = 50;
+
+var yIndex;
+for(yIndex = 0; yIndex &lt; obj_maze_graph.sprite_height; yIndex += cellSize) {
+    var rowData = ds_list_create();
+    
+    var xIndex;
+    for(xIndex = 0; xIndex &lt; obj_maze_graph.sprite_width; xIndex += cellSize) {
+        var walkable = true;
+        
+        var ySubIndex;
+        for(ySubIndex = 0; ySubIndex &lt; cellSize; ySubIndex += 1) {
+            var xSubIndex
+            for(xSubIndex = 0; xSubIndex &lt; cellSize; xSubIndex += 1) {
+                if(position_meeting(xIndex + xSubIndex,
+                    yIndex + ySubIndex, obj_maze_graph)) {
+                
+                    walkable = false;
+                    break;
+                }
+            }
+            
+            if(!walkable) {
+                break;
+            }
+        }
+    
+        var cellData;
+        if(walkable) {
+            cellData = 1;
+        } else {
+            cellData = -1;
+        }
+        
+        ds_list_add(rowData, cellData);
+    }
+    
+    ds_list_add(graphData, rowData);
+    ds_list_mark_as_list(graphData, ds_list_size(graphData) - 1);
+    
+    show_debug_message("row " + string(yIndex + 1) + " of " +
+        string(obj_maze_graph.sprite_height) + " rows");
+}
+
+var map = ds_map_create();
+ds_map_add(map, "cellSize", cellSize);
+ds_map_add_list(map, "graphData", graphData);
+
+var fileLocation = working_directory + "graphData.json";
+var file = file_text_open_write(fileLocation);
+file_text_write_string(file, json_encode(map));
+file_text_close(file);
+
+show_debug_message("file written to " + fileLocation);
+
+game_end();</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

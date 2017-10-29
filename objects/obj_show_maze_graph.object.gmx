@@ -31,7 +31,7 @@ var alpha = draw_get_alpha();
 
 draw_set_alpha(0.5);
 
-var cellSize = 50;
+var cellSize = global.cellSize;
 var upperLeftViewX = floor((view_xview[0] - global.upperLeftX) / cellSize);
 var upperLeftViewY = floor((view_yview[0] - global.upperLeftY) / cellSize);
 var xCells = ceil(view_wview[0] / cellSize);

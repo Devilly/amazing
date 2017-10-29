@@ -8,4 +8,4 @@ while (!file_text_eof(file))
 
 file_text_close(file);
 
-return ds_map_find_value(json_decode(content), "graphData");
+return json_decode(content);

@@ -3,7 +3,7 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="3" name="datafiles">
+  <datafiles number="5" name="datafiles">
     <datafile>
       <name>graphData.json</name>
       <exists>-1</exists>
@@ -52,6 +52,14 @@
       <script>scripts\setMovement.gml</script>
     </scripts>
     <script>scripts\readGraph.gml</script>
+    <scripts name="enemy">
+      <script>scripts\convertPixelToCellHorizontal.gml</script>
+      <script>scripts\convertPixelToCellVertical.gml</script>
+      <script>scripts\addPathPosition.gml</script>
+      <script>scripts\isValidPosition.gml</script>
+      <script>scripts\addPathPositionIfOkay.gml</script>
+      <script>scripts\convertPositionToString.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <object>objects\obj_maze</object>
@@ -77,7 +85,7 @@
     </objects>
   </objects>
   <timelines name="timelines">
-    <timeline>timelines\tl_lose_target</timeline>
+    <timeline>timelines\tl_find_character</timeline>
   </timelines>
   <rooms name="rooms">
     <room>rooms\rm_start</room>

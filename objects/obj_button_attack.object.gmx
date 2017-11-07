@@ -3,7 +3,7 @@
   <spriteName>spr_button_attack</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-3</depth>
+  <depth>-999</depth>
   <persistent>0</persistent>
   <parentName>obj_button</parentName>
   <maskName>&lt;undefined&gt;</maskName>

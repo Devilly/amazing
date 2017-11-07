@@ -75,7 +75,6 @@ while(true) {
     addPathPositionIfOkay(positionsQueue, visitedPositions, xCoordinate, yCoordinate - 1, endX, endY);
 }
 
-path = ds_list_create();
 while(previousPosition != undefined) {
     ds_list_insert(path, 0, previousPosition);
     previousPosition = ds_map_find_value(positionsHistory, previousPosition);

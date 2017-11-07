@@ -12,7 +12,7 @@
   <showcolour>0</showcolour>
   <code>// Toggle on/off debugging features like
 // console logging and on screen code visualisation.
-global.debugging = true;
+global.debugging = false;
 
 // Do not allow the screen to turn off.
 os_powersave_enable(false);
@@ -98,14 +98,15 @@ global.graphData = ds_map_find_value(graph, "graphData");
 
 // Add instances needed for the play.
 instance_create(450, 5550, obj_character);
-instance_create(2050, 5850, obj_enemy);
+//instance_create(2050, 5850, obj_enemy);
+//instance_create(1000, 5850, obj_mean_machine);
 
 if(global.debugging) {
     instance_create(0, 0, obj_show_maze_graph);
 }</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>0</clearViewBackground>
-  <clearDisplayBuffer>-1</clearDisplayBuffer>
+  <clearDisplayBuffer>0</clearDisplayBuffer>
   <makerSettings>
     <isSet>0</isSet>
     <w>0</w>

@@ -32,6 +32,7 @@
     <sprite>sprites\spr_enemy</sprite>
     <sprite>sprites\spr_mean_machine</sprite>
     <sprite>sprites\spr_mean_machine_smoke</sprite>
+    <sprite>sprites\spr_mean_machine_shadow</sprite>
     <sprite>sprites\spr_button_right</sprite>
     <sprite>sprites\spr_button_up</sprite>
     <sprite>sprites\spr_button_down</sprite>

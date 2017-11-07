@@ -99,7 +99,7 @@ global.graphData = ds_map_find_value(graph, "graphData");
 // Add instances needed for the play.
 instance_create(450, 5550, obj_character);
 //instance_create(2050, 5850, obj_enemy);
-//instance_create(1000, 5850, obj_mean_machine);
+instance_create(1000, 5850, obj_mean_machine);
 
 if(global.debugging) {
     instance_create(0, 0, obj_show_maze_graph);

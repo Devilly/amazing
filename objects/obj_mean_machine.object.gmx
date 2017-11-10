@@ -249,7 +249,7 @@ if(status == Status.movingIn) {
     
     if(y &gt;= view_yview[0] + (view_hview[0] / 2) - floatingDistanceToShadow) {
         status = Status.controlled;
-        alarm_set(1, room_speed * 5);
+        alarm_set(1, room_speed * 8);
     }
 } else if(status == Status.controlled) {
     var xTilt = device_get_tilt_y();

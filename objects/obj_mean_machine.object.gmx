@@ -30,6 +30,7 @@
 smokeSpeed = 4;
 alarm_set(0, smokeSpeed);
 smokeIndex = 0;
+smokeAllOut = false;
 smokeSprite = spr_mean_machine_smoke;
 
 showSmoke[0] = false;
@@ -152,6 +153,7 @@ alarm_set(3, room_speed * 2);
           <argument>
             <kind>1</kind>
             <string>status = Status.dropping;
+smokeAllOut = false;
 alarm_set(2, room_speed / 6);
 </string>
           </argument>
@@ -175,14 +177,26 @@ alarm_set(2, room_speed / 6);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>smokeIndex = (smokeIndex + 1) % sprite_get_number(smokeSprite);
-    
+            <string>var numberOfSubimages = sprite_get_number(smokeSprite);
+smokeIndex = (smokeIndex + 1) % numberOfSubimages;
+
+if(smokeAllOut) {
+    smokeIndex = 0;
+}
+
 if(smokeIndex == 0) {
     var executeAnimation = ((status == Status.movingIn) ||
-        (status == Status.controlled) ||
+        ((status == Status.controlled) &amp;&amp; (alarm_get(1) &gt; (numberOfSubimages * 3 * smokeSpeed))) ||
         (status == Status.ascending) ||
-        (status == Status.movingOut)) &amp;&amp;
-        random(1) &lt; 0.40;
+        (status == Status.movingOut));
+        
+    if(executeAnimation) {
+        executeAnimation = random(1) &lt; 0.40;
+    }
+    
+    if(smokeAllOut) {
+        executeAnimation = true;
+    }
 
     var index;
     for(index = 0; index &lt; array_length_1d(showSmoke); index++) {
@@ -191,7 +205,15 @@ if(smokeIndex == 0) {
         } else {
             showSmoke[index] = false;
         }
+        
+        if(smokeAllOut) {
+            showSmoke[index] = true;
+        }
     }
+}
+
+if(smokeAllOut) {
+    smokeAllOut = false;
 }
 
 alarm_set(0, smokeSpeed);
@@ -237,7 +259,6 @@ if(status == Status.movingIn) {
     var lowestY = view_yview[0] - 500;
     var highestY = view_yview[0] + view_hview[0] - 500;
     
-    // 2. move mean machine according to tilt mechanics
     if(abs(xTilt) &gt; 0.25) {
         x += round(xTilt) * movementSpeed;
         
@@ -248,6 +269,10 @@ if(status == Status.movingIn) {
         
         if(y &lt; lowestY) y = lowestY;
         if(y &gt; highestY) y = highestY;
+    }
+    
+    if(alarm_get(1) == (sprite_get_number(smokeSprite) * 2 * smokeSpeed)) {
+        smokeAllOut = true;
     }
 } else if(status == Status.dropping) {
     var stepsToGo = alarm_get(2);
@@ -262,7 +287,7 @@ if(status == Status.movingIn) {
 } else if(status == Status.movingOut) {
     y -= movementSpeed;
     
-    if(y &lt; view_yview[0] - floatingDistanceToShadow) {
+    if(y &lt; view_yview[0] - (floatingDistanceToShadow + 200)) {
         instance_destroy();
     }
 }
@@ -296,14 +321,14 @@ yRelativeToView = y - view_yview[0];
             <string>draw_sprite_ext(spr_mean_machine_shadow, 0,
     x, y + distanceToShadow,
     1, 1,
-    0, c_white, 0.3);
+    0, c_white, 0.3 + 0.4 * (1 - distanceToShadow / floatingDistanceToShadow));
 
 var cutOff = 0;
-var distanceToShadowToTouchMaze = 62;
+var distanceToShadowToTouchMaze = 63 ;
 if(distanceToShadow &lt; distanceToShadowToTouchMaze) {
     cutOff = distanceToShadowToTouchMaze - distanceToShadow;
 }
-show_debug_message(sprite_height - cutOff);
+
 draw_sprite_part(spr_mean_machine, 0,
     0, 0,
     sprite_width, sprite_height - cutOff,

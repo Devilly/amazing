@@ -254,19 +254,11 @@ if(status == Status.movingIn) {
     var fallPerStep = distanceToShadow / stepsToGo;
     y += fallPerStep;
     distanceToShadow -= fallPerStep;
-    
-    if(distanceToShadow &gt; 10) {
-        image_index = 1;
-    }
 } else if(status == Status.ascending) {
     var stepsToGo = alarm_get(4);
     var risePerStep = (floatingDistanceToShadow - distanceToShadow) / stepsToGo;
     y -= risePerStep;
     distanceToShadow += risePerStep;
-    
-    if(distanceToShadow &gt; 20) {
-        image_index = 0;
-    }
 } else if(status == Status.movingOut) {
     y -= movementSpeed;
     
@@ -306,7 +298,16 @@ yRelativeToView = y - view_yview[0];
     1, 1,
     0, c_white, 0.3);
 
-draw_self();
+var cutOff = 0;
+var distanceToShadowToTouchMaze = 62;
+if(distanceToShadow &lt; distanceToShadowToTouchMaze) {
+    cutOff = distanceToShadowToTouchMaze - distanceToShadow;
+}
+show_debug_message(sprite_height - cutOff);
+draw_sprite_part(spr_mean_machine, 0,
+    0, 0,
+    sprite_width, sprite_height - cutOff,
+    x - (sprite_width / 2), y - (sprite_height / 2));
 
 if(smokeIndex &lt; sprite_get_number(smokeSprite)) {
     if(showSmoke[0]) {

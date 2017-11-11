@@ -32,6 +32,8 @@ yMovement = 0;
 
 currentSpeed = 0;
 walkingSpeed = 10;
+
+hoverNumber = 0;
 </string>
           </argument>
         </arguments>
@@ -58,6 +60,9 @@ walkingSpeed = 10;
 if(currentSpeed &lt; 0) {
     currentSpeed = 0;
 }
+
+hoverNumber += 0.01;
+hoverNumber = hoverNumber % (2 * pi);
 </string>
           </argument>
         </arguments>
@@ -207,7 +212,7 @@ for(iteration = 0; iteration &lt; currentSpeed; iteration++) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
+            <string>draw_sprite(sprite_index, image_index, x, y + (sin(hoverNumber) * 20));
 
 if(global.debugging) {
     draw_text_transformed(x, y, "x: " + string(x) + "; y: " + string(y), 2, 2, 0);

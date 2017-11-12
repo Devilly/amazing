@@ -61,7 +61,7 @@ if(currentSpeed &lt; 0) {
     currentSpeed = 0;
 }
 
-hoverNumber += 0.01;
+hoverNumber += 0.02;
 hoverNumber = hoverNumber % (2 * pi);
 </string>
           </argument>

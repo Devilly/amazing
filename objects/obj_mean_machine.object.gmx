@@ -25,7 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0;
+            <string>// Controlling the mean machine
+// should not have impact on the average
+// tilting recognized by the game.
+tiltLogStop();
+
+// default values
+image_speed = 0;
 
 smokeSpeed = 4;
 alarm_set(0, smokeSpeed);
@@ -53,12 +59,35 @@ enum Status {
 }
 status = Status.movingIn;
 
-// set starting position
+// starting position
 x = (view_xview[0] + view_wview[0]) / 2;
 y = view_yview[0] - 600;
 
 xRelativeToView = x - view_xview[0];
 yRelativeToView = y - view_yview[0];
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>tiltLogStart();
 </string>
           </argument>
         </arguments>
@@ -152,7 +181,9 @@ alarm_set(3, room_speed * 2);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>status = Status.dropping;
+            <string>tiltLogStart();
+
+status = Status.dropping;
 smokeAllOut = false;
 alarm_set(2, room_speed / 6);
 </string>
@@ -239,11 +270,11 @@ alarm_set(0, smokeSpeed);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// 1. move mean machine according to view movement
+            <string>// 1. Move mean machine according to view movement.
 x = view_xview[0] + xRelativeToView;
 y = view_yview[0] + yRelativeToView;
 
-// 2. move mean machine based on its current status
+// 2. Move mean machine based on its current status.
 if(status == Status.movingIn) {
     y += movementSpeed;
     
@@ -252,20 +283,26 @@ if(status == Status.movingIn) {
         alarm_set(1, room_speed * 8);
     }
 } else if(status == Status.controlled) {
-    var xTilt = device_get_tilt_y();
-    var yTilt = device_get_tilt_x();
+    var averageTiltX = tiltLogGetAverageX();
+    var averageTiltY = tiltLogGetAverageY();
+    var xTilt = device_get_tilt_y() - averageTiltX;
+    var yTilt = device_get_tilt_x() - averageTiltY;
     var lowestX = view_xview[0] + 150;
     var highestX = view_xview[0] + view_wview[0] - 150;
     var lowestY = view_yview[0] - 500;
     var highestY = view_yview[0] + view_hview[0] - 500;
     
-    if(abs(xTilt) &gt; 0.25) {
-        x += round(xTilt) * movementSpeed;
+    if(abs(xTilt) &gt; 0.1) {
+        var movement = movementSpeed;
+        if(xTilt &lt; 0) movement *= -1;
+        x += movement;
         
         if(x &lt; lowestX) x = lowestX;
         if(x &gt; highestX) x = highestX;
-    } else if(abs(yTilt) &gt; 0.5) {
-        y += round(yTilt * movementSpeed);
+    } else if(abs(yTilt) &gt; 0.15) {
+        var movement = movementSpeed;
+        if(yTilt &lt; 0) movement *= -1;
+        y += movement;
         
         if(y &lt; lowestY) y = lowestY;
         if(y &gt; highestY) y = highestY;
@@ -292,8 +329,8 @@ if(status == Status.movingIn) {
     }
 }
 
-// save the position relative to the view
-// for use in 1. during the next step
+// Save the position relative to the view
+// for use in 1. during the next step.
 xRelativeToView = x - view_xview[0];
 yRelativeToView = y - view_yview[0];
 </string>

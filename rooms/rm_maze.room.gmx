@@ -95,8 +95,8 @@ var graph = readGraph();
 global.cellSize = ds_map_find_value(graph, "cellSize");
 global.graphData = ds_map_find_value(graph, "graphData");
 
+instance_create(0, 0, obj_tilt_log);
 
-// Add instances needed for the play.
 instance_create(450, 5550, obj_character);
 //instance_create(2050, 5850, obj_enemy);
 

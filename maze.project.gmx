@@ -63,6 +63,12 @@
       <script>scripts\addPathPositionIfOkay.gml</script>
       <script>scripts\convertPositionToString.gml</script>
     </scripts>
+    <scripts name="meta">
+      <script>scripts\tiltLogGetAverageX.gml</script>
+      <script>scripts\tiltLogGetAverageY.gml</script>
+      <script>scripts\tiltLogStart.gml</script>
+      <script>scripts\tiltLogStop.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <object>objects\obj_maze</object>
@@ -86,6 +92,9 @@
     </objects>
     <objects name="debugging">
       <object>objects\obj_show_maze_graph</object>
+    </objects>
+    <objects name="meta">
+      <object>objects\obj_tilt_log</object>
     </objects>
   </objects>
   <timelines name="timelines">

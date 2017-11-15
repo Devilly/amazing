@@ -371,26 +371,24 @@ draw_sprite_part(spr_mean_machine, 0,
     sprite_width, sprite_height - cutOff,
     x - (sprite_width / 2), y - (sprite_height / 2));
 
-if(smokeIndex &lt; sprite_get_number(smokeSprite)) {
-    if(showSmoke[0]) {
-        // lower left
-        draw_sprite(smokeSprite, smokeIndex, x - 240, y - 80);
-    }
-    
-    if(showSmoke[1]) {
-        // lower right
-        draw_sprite_ext(smokeSprite, smokeIndex, x + 240, y - 80, -1, 1, 0, c_white, 1);
-    }
-    
-    if(showSmoke[2]) {
-        // upper left
-        draw_sprite(smokeSprite, smokeIndex, x - 140, y - 190);
-    }
-    
-    if(showSmoke[3]) {
-        // upper right
-        draw_sprite_ext(smokeSprite, smokeIndex, x + 140, y - 190, -1, 1, 0, c_white, 1);
-    }
+if(showSmoke[0]) {
+    // lower left
+    draw_sprite(smokeSprite, smokeIndex, x - 240, y - 80);
+}
+
+if(showSmoke[1]) {
+    // lower right
+    draw_sprite_ext(smokeSprite, smokeIndex, x + 240, y - 80, -1, 1, 0, c_white, 1);
+}
+
+if(showSmoke[2]) {
+    // upper left
+    draw_sprite(smokeSprite, smokeIndex, x - 140, y - 190);
+}
+
+if(showSmoke[3]) {
+    // upper right
+    draw_sprite_ext(smokeSprite, smokeIndex, x + 140, y - 190, -1, 1, 0, c_white, 1);
 }
 </string>
           </argument>

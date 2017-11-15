@@ -29,6 +29,9 @@
     <sprite>sprites\spr_maze_hitbox</sprite>
     <sprite>sprites\spr_sand</sprite>
     <sprite>sprites\spr_character</sprite>
+    <sprite>sprites\spr_shot</sprite>
+    <sprite>sprites\spr_bullet</sprite>
+    <sprite>sprites\spr_impact</sprite>
     <sprite>sprites\spr_enemy</sprite>
     <sprite>sprites\spr_mean_machine</sprite>
     <sprite>sprites\spr_mean_machine_smoke</sprite>
@@ -68,6 +71,7 @@
       <script>scripts\tiltLogGetAverageY.gml</script>
       <script>scripts\tiltLogStart.gml</script>
       <script>scripts\tiltLogStop.gml</script>
+      <script>scripts\touchInputCheckIfHeldDownOn.gml</script>
     </scripts>
   </scripts>
   <objects name="objects">
@@ -75,6 +79,9 @@
     <object>objects\obj_maze_hitbox</object>
     <object>objects\obj_sand</object>
     <object>objects\obj_character</object>
+    <object>objects\obj_shot</object>
+    <object>objects\obj_bullet</object>
+    <object>objects\obj_impact</object>
     <object>objects\obj_enemy</object>
     <object>objects\obj_mean_machine</object>
     <object>objects\obj_button_up</object>
@@ -95,6 +102,7 @@
     </objects>
     <objects name="meta">
       <object>objects\obj_tilt_log</object>
+      <object>objects\obj_touch_input</object>
     </objects>
   </objects>
   <timelines name="timelines">

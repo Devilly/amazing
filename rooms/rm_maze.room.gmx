@@ -96,6 +96,7 @@ global.cellSize = ds_map_find_value(graph, "cellSize");
 global.graphData = ds_map_find_value(graph, "graphData");
 
 instance_create(0, 0, obj_tilt_log);
+instance_create(0, 0, obj_touch_input);
 
 instance_create(450, 5550, obj_character);
 //instance_create(2050, 5850, obj_enemy);

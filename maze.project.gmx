@@ -78,6 +78,7 @@
     <object>objects\obj_maze</object>
     <object>objects\obj_maze_hitbox</object>
     <object>objects\obj_sand</object>
+    <object>objects\obj_stage</object>
     <object>objects\obj_character</object>
     <object>objects\obj_shot</object>
     <object>objects\obj_bullet</object>

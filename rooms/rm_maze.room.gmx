@@ -10,15 +10,7 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>0</showcolour>
-  <code>// Toggle on/off debugging features like
-// console logging and on screen code visualisation.
-global.debugging = false;
-
-// Do not allow the screen to turn off.
-os_powersave_enable(false);
-
-// Set and fill views.
-var windowWidth = window_get_width();
+  <code>var windowWidth = window_get_width();
 var windowHeight = window_get_height();
 
 surface_resize(application_surface, windowWidth, windowHeight);
@@ -97,6 +89,7 @@ global.graphData = ds_map_find_value(graph, "graphData");
 
 instance_create(0, 0, obj_tilt_log);
 instance_create(0, 0, obj_touch_input);
+instance_create(0, 0, obj_sleep_and_wake_handler);
 
 instance_create(450, 5550, obj_character);
 //instance_create(2050, 5850, obj_enemy);

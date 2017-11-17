@@ -78,7 +78,6 @@
     <object>objects\obj_maze</object>
     <object>objects\obj_maze_hitbox</object>
     <object>objects\obj_sand</object>
-    <object>objects\obj_stage</object>
     <object>objects\obj_character</object>
     <object>objects\obj_shot</object>
     <object>objects\obj_bullet</object>
@@ -95,6 +94,9 @@
     <object>objects\obj_button_attack</object>
     <object>objects\obj_button_super_attack</object>
     <object>objects\obj_combat_background</object>
+    <object>objects\obj_preload</object>
+    <object>objects\obj_maze_loading_blank</object>
+    <object>objects\obj_maze_loading</object>
     <objects name="preprocessor">
       <object>objects\obj_maze_graph</object>
     </objects>
@@ -104,6 +106,7 @@
     <objects name="meta">
       <object>objects\obj_tilt_log</object>
       <object>objects\obj_touch_input</object>
+      <object>objects\obj_sleep_and_wake_handler</object>
     </objects>
   </objects>
   <timelines name="timelines">
@@ -111,6 +114,8 @@
   </timelines>
   <rooms name="rooms">
     <room>rooms\rm_start</room>
+    <room>rooms\rm_maze_loading_blank</room>
+    <room>rooms\rm_maze_loading</room>
     <room>rooms\rm_maze</room>
     <rooms name="preprocessor">
       <room>rooms\rm_maze_graph</room>
